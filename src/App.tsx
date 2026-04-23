@@ -4,19 +4,34 @@ export default function App() {
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [isSpeaking, setIsSpeaking] = useState(false);
 
-  const storyArabic = `
-في أحد الأيام، عاشت حمامة صغيرة مع صغارها بالقرب من مطعم صغير. 
-كان صاحب المطعم يقدم لها فتات الخبز كل يوم. 
-كانت الحمامة سعيدة وقانعة بما لديها.
+  const storyParts = [
+    {
+      text: "في أحد الأيام، عاشت حمامة صغيرة مع صغارها بالقرب من مطعم صغير.",
+      img: "/images/img-1.jpeg",
+    },
+    {
+      text: "كان صاحب المطعم يقدم لها فتات الخبز كل يوم. وكانت الحمامة سعيدة وقانعة بما لديها.",
+      img: "/images/img-2.jpeg",
+    },
+    {
+      text: "رآها غراب ماكر، وأراد الحصول على المزيد من الطعام، فاقترب منها وكسب ثقتها.",
+      img: "/images/img-3.jpeg",
+    },
+    {
+      text: "اقترح عليها دخول المطعم، لكنها رفضت وأبدت قناعتها بما لديها.",
+      img: "/images/img-4.jpeg",
+    },
+    {
+      text: "دخل الغراب وحده، لكنه تعثر وسقط في قدر المرق وتبلل بالكامل.",
+      img: "/images/img-5.jpeg",
+    },
+    {
+      text: "وتعلم أن الجشع يؤدي إلى عواقب وخيمة.",
+      img: "/images/img-6.jpeg",
+    },
+  ];
 
-رآها غراب ماكر وأراد الحصول على المزيد من الطعام، فاقترب منها وكسب ثقتها.
-
-اقترح الغراب على الحمامة دخول المطعم للحصول على طعام أكثر، لكنها رفضت.
-
-دخل الغراب وحده، لكنه تعثر وسقط في قدر المرق وتبلل بالكامل.
-
-وتعلم أن الجشع يؤدي إلى عواقب وخيمة.
-`;
+  const storyArabic = storyParts.map((p) => p.text).join("\n");
 
   const questions = [
     {
@@ -149,7 +164,6 @@ export default function App() {
     const utterance = new SpeechSynthesisUtterance(storyArabic);
     utterance.lang = "ar-SA";
     utterance.rate = 0.9;
-
     utterance.onend = () => setIsSpeaking(false);
 
     window.speechSynthesis.speak(utterance);
@@ -163,7 +177,7 @@ export default function App() {
           🐦 قصة الحمامة والغراب
         </h1>
 
-        {/* READ BUTTON */}
+        {/* BUTTON */}
         <button
           onClick={handleRead}
           className="w-full py-3 mb-6 rounded-xl bg-yellow-400 font-bold text-purple-800 shadow-md hover:scale-[1.02] transition"
@@ -172,10 +186,20 @@ export default function App() {
         </button>
 
         {/* STORY */}
-        <div className="bg-white rounded-2xl shadow p-6 mb-6">
-          <p className="text-lg leading-loose text-right text-gray-800 whitespace-pre-line">
-            {storyArabic}
-          </p>
+        <div className="bg-white rounded-2xl shadow p-6 mb-6 space-y-6">
+          {storyParts.map((part, i) => (
+            <div key={i} className="space-y-3">
+              <p className="text-lg leading-loose text-right text-gray-800">
+                {part.text}
+              </p>
+
+              <img
+                src={part.img}
+                alt={`story-${i}`}
+                className="w-full rounded-xl shadow"
+              />
+            </div>
+          ))}
         </div>
 
         {/* QUESTIONS */}
@@ -217,7 +241,7 @@ export default function App() {
           ))}
         </div>
 
-        {/* FINAL NOTE */}
+        {/* FINAL SCORE */}
         {allAnswered && (
           <div className="mt-6 p-6 text-center rounded-2xl bg-gradient-to-r from-purple-200 to-pink-200">
             <h2 className="text-2xl font-bold mb-2">🎉 النتيجة النهائية</h2>
