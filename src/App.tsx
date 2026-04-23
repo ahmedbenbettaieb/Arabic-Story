@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./index.css";
 
 export default function App() {
   const [answers, setAnswers] = useState<Record<number, number>>({});
@@ -7,13 +6,14 @@ export default function App() {
 
   const storyArabic = `
 في أحد الأيام، عاشت حمامة صغيرة مع صغارها بالقرب من مطعم صغير. 
-كان صاحب المطعم يقدم لها فتات الخبز كل يوم. وكانت الحمامة سعيدة وقانعة بما لديها.
+كان صاحب المطعم يقدم لها فتات الخبز كل يوم. 
+كانت الحمامة سعيدة وقانعة بما لديها.
 
-رآها غراب ماكر، وأراد الحصول على المزيد من الطعام، فاقترب منها وكسب ثقتها.
+رآها غراب ماكر وأراد الحصول على المزيد من الطعام، فاقترب منها وكسب ثقتها.
 
-اقترح عليها دخول المطعم، لكنها رفضت.
+اقترح الغراب على الحمامة دخول المطعم للحصول على طعام أكثر، لكنها رفضت.
 
-دخل الغراب وحده، لكنه سقط في قدر المرق.
+دخل الغراب وحده، لكنه تعثر وسقط في قدر المرق وتبلل بالكامل.
 
 وتعلم أن الجشع يؤدي إلى عواقب وخيمة.
 `;
@@ -23,36 +23,102 @@ export default function App() {
       id: 0,
       question: "ما معنى الجشع؟",
       options: [
-        "الرغبة في شيء نفتقده",
-        "الرغبة المستمرة في المزيد دون اكتفاء",
+        "الرغبة في الحصول على شيء نفتقده",
+        "الرغبة المستمرة في الحصول على المزيد دون اكتفاء",
         "القناعة بما نملك",
-        "مشاركة الآخرين",
+        "مشاركة الآخرين بما لدينا",
       ],
       correctIndex: 1,
     },
     {
       id: 1,
-      question: "من يمثل الجشع؟",
+      question: "من الشخصية التي تمثل الجشع في القصة؟",
       options: ["الحمامة", "الطباخ", "الغراب", "صاحب المطعم"],
       correctIndex: 2,
     },
     {
       id: 2,
-      question: "من يمثل القناعة؟",
-      options: ["الحمامة", "الغراب", "الطباخ", "الناس"],
+      question: "أيّ الشخصيات تمثل القناعة والرضا؟",
+      options: ["الحمامة", "الطباخ", "الغراب", "الزوار"],
       correctIndex: 0,
     },
     {
       id: 3,
-      question: "أين تدور القصة؟",
-      options: ["غابة", "مطعم صغير", "منزل", "سوق"],
+      question: "أين تدور أحداث القصة؟",
+      options: [
+        "في الغابة البعيدة",
+        "بالقرب من مطعم صغير",
+        "داخل بيت الحمامة",
+        "في السوق",
+      ],
       correctIndex: 1,
     },
     {
       id: 4,
-      question: "ماذا كانت تأكل الحمامة؟",
-      options: ["سمك", "حبوب", "فتات الخبز", "لحم"],
+      question: "ماذا كان يقدم صاحب المطعم للحمامة؟",
+      options: ["السمك", "الحبوب", "فتات الخبز", "الماء"],
       correctIndex: 2,
+    },
+    {
+      id: 5,
+      question: "من الذي رأى الحمامة وصغارها؟",
+      options: ["العصفور", "الغراب", "النسر", "الديك"],
+      correctIndex: 1,
+    },
+    {
+      id: 6,
+      question: "لماذا أصبح الغراب صديقًا للحمامة؟",
+      options: [
+        "لأنه ساعدها في بناء العش",
+        "لأنه كسب ثقتها مع مرور الوقت",
+        "لأنه كان قويًا",
+        "لأنه يعيش بالقرب منها",
+      ],
+      correctIndex: 1,
+    },
+    {
+      id: 7,
+      question: "ماذا اقترح الغراب على الحمامة؟",
+      options: [
+        "مغادرة المكان",
+        "بناء عش جديد",
+        "دخول المطعم للحصول على طعام أكثر",
+        "البحث عن ماء",
+      ],
+      correctIndex: 2,
+    },
+    {
+      id: 8,
+      question: "كيف ردت الحمامة على اقتراح الغراب؟",
+      options: [
+        "وافقت فورًا",
+        "رفضت وأبدت قناعتها بما لديها",
+        "غضبت منه",
+        "تجاهلته",
+      ],
+      correctIndex: 1,
+    },
+    {
+      id: 9,
+      question: "ماذا حدث للغراب داخل المطعم؟",
+      options: [
+        "أكل السمكة وهرب",
+        "طرده الطباخ فورًا",
+        "تعثر وسقط وتبلل بالمرق",
+        "اختبأ ولم يره أحد",
+      ],
+      correctIndex: 2,
+    },
+    {
+      id: 10,
+      question: "ما العبرة من القصة؟",
+      options: [
+        "التعاون بين الأصدقاء مهم",
+        "الجشع يؤدي إلى عواقب وخيمة",
+        "العمل أفضل من الراحة",
+        "يجب الحذر من الغرباء",
+      ],
+      correctIndex: 1,
     },
   ];
 
@@ -60,7 +126,7 @@ export default function App() {
 
   const score = questions.reduce(
     (acc, q) => acc + (answers[q.id] === q.correctIndex ? 1 : 0),
-    0
+    0,
   );
 
   const allAnswered = Object.keys(answers).length === total;
@@ -90,62 +156,84 @@ export default function App() {
   };
 
   return (
-    <div className="app">
-      <h1>🐦 قصة الحمامة والغراب</h1>
+    <div className="min-h-screen bg-gradient-to-b from-purple-100 via-pink-50 to-blue-100 p-4 sm:p-8">
+      <div className="max-w-2xl mx-auto">
+        {/* TITLE */}
+        <h1 className="text-3xl sm:text-4xl font-bold text-center text-purple-700 mb-6 mt-6">
+          🐦 قصة الحمامة والغراب
+        </h1>
 
-      <button onClick={handleRead} className="btn">
-        {isSpeaking ? "⏹️ إيقاف" : "🔊 اقرأ القصة"}
-      </button>
+        {/* READ BUTTON */}
+        <button
+          onClick={handleRead}
+          className="w-full py-3 mb-6 rounded-xl bg-yellow-400 font-bold text-purple-800 shadow-md hover:scale-[1.02] transition"
+        >
+          {isSpeaking ? "⏹️ إيقاف" : "🔊 اقرأ القصة"}
+        </button>
 
-      <div className="story">
-        <p>{storyArabic}</p>
-      </div>
-
-      <div className="questions">
-        {questions.map((q) => (
-          <div key={q.id} className="question">
-            <h3>
-              {q.id + 1}. {q.question}
-            </h3>
-
-            {q.options.map((opt, i) => (
-              <button
-                key={i}
-                onClick={() => select(q.id, i)}
-                className={`option ${
-                  answers[q.id] === i ? "selected" : ""
-                }`}
-              >
-                {opt}
-              </button>
-            ))}
-
-            {answers[q.id] !== undefined && (
-              <p className="result">
-                {answers[q.id] === q.correctIndex
-                  ? "✅ صحيح"
-                  : `❌ الصحيح: ${q.options[q.correctIndex]}`}
-              </p>
-            )}
-          </div>
-        ))}
-      </div>
-
-      {allAnswered && (
-        <div className="final">
-          <h2>🎉 النتيجة النهائية</h2>
-          <p>
-            {score} / {total}
+        {/* STORY */}
+        <div className="bg-white rounded-2xl shadow p-6 mb-6">
+          <p className="text-lg leading-loose text-right text-gray-800 whitespace-pre-line">
+            {storyArabic}
           </p>
-          <h3>
-            {score === total
-              ? "🌟 ممتاز!"
-              : score >= 3
-              ? "👏 جيد!"
-              : "💪 حاول مرة أخرى"}
-          </h3>
         </div>
-      )}
+
+        {/* QUESTIONS */}
+        <div className="bg-white rounded-2xl shadow p-6 space-y-8">
+          {questions.map((q) => (
+            <div key={q.id}>
+              <h3 className="font-bold text-lg text-right mb-3">
+                {q.id + 1}. {q.question}
+              </h3>
+
+              <div className="space-y-2">
+                {q.options.map((opt, i) => (
+                  <button
+                    key={i}
+                    onClick={() => select(q.id, i)}
+                    className={`w-full text-right p-3 rounded-xl border transition ${
+                      answers[q.id] === i
+                        ? "bg-pink-500 text-white"
+                        : "bg-white hover:bg-gray-100"
+                    }`}
+                  >
+                    {opt}
+                  </button>
+                ))}
+              </div>
+
+              {answers[q.id] !== undefined && (
+                <p className="mt-2 font-bold text-right">
+                  {answers[q.id] === q.correctIndex ? (
+                    <span className="text-green-600">✅ صحيح</span>
+                  ) : (
+                    <span className="text-red-600">
+                      ❌ الصحيح: {q.options[q.correctIndex]}
+                    </span>
+                  )}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* FINAL NOTE */}
+        {allAnswered && (
+          <div className="mt-6 p-6 text-center rounded-2xl bg-gradient-to-r from-purple-200 to-pink-200">
+            <h2 className="text-2xl font-bold mb-2">🎉 النتيجة النهائية</h2>
+            <p className="text-xl font-bold">
+              {score} / {total}
+            </p>
+            <p className="mt-2 font-bold">
+              {score === total
+                ? "🌟 ممتاز!"
+                : score >= 3
+                  ? "👏 جيد!"
+                  : "💪 حاول مرة أخرى"}
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
