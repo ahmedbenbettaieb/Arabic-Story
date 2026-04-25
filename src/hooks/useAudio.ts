@@ -36,17 +36,31 @@ export function useAudio() {
 
   const playCorrect = () => {
     const ctx = getCtx();
+
     [
       [523, 0],
       [659, 0.12],
       [784, 0.24],
       [1047, 0.38],
     ].forEach(([f, t]) => note(ctx, f, t, 0.25, 0.28, "sine"));
+
+    speak("أحسنت");
   };
 
-  const playWrong = () => {
-    new Audio("https://instantrimshot.com/audio/priceiswrong.mp3").play();
-  };
+const playWrong = () => {
+  const ctx = getCtx();
+
+  [
+    [220, 0],
+    [196, 0.12],
+    [174, 0.24],
+    [146, 0.36],
+  ].forEach(([f, t]) => note(ctx, f, t, 0.28, 0.3, "sawtooth"));
+
+  note(ctx, 110, 0.5, 0.5, 0.25, "triangle");
+
+  speak("إجابة خاطئة");
+};
 
   const playVictory = () => {
     const ctx = getCtx();
@@ -67,6 +81,19 @@ export function useAudio() {
       [196, 1.5],
       [196, 2.0],
     ].forEach(([f, t]) => note(ctx, f, t, 0.3, 0.18, "triangle"));
+  };
+
+  const speak = (text: string) => {
+    if (!("speechSynthesis" in window)) return;
+
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "ar-SA";
+    utterance.rate = 0.95;
+    utterance.pitch = 1;
+
+    window.speechSynthesis.speak(utterance);
   };
 
   const playMedium = () => {
