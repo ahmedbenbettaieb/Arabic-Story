@@ -33,8 +33,8 @@ export default function Home() {
         }
 
         .home-card.locked {
-          opacity: 0.35;
-          filter: grayscale(0.7);
+          opacity: 0.60;
+          filter: grayscale(0.3);
           cursor: default;
         }
 
