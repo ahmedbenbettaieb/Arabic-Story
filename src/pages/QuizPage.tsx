@@ -8,7 +8,7 @@ import ScoreBar from "../components/ScoreBar";
 import StorySection from "../components/StorySection";
 import QuestionCard from "../components/QuestionCard";
 import ResultOverlay from "../components/ResultOverlay";
-
+import AlternativeEnding from "../components/AlternativeEnding";
 export default function QuizPage() {
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [showResult, setShowResult] = useState(false);
@@ -104,6 +104,7 @@ export default function QuizPage() {
           ))}
         </div>
       </div>
+      <AlternativeEnding />
     </div>
   );
 }
