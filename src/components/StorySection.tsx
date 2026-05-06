@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function StorySection({ storyParts }: Props) {
-  const { speak, stop } = useStorySpeech();
+  const { speak, stop, isLoading, isPlaying } = useStorySpeech();
 
   const fullStoryText = useMemo(
     () => storyParts.map((p) => p.text).join(" "),
@@ -20,18 +20,20 @@ export default function StorySection({ storyParts }: Props) {
       <div style={{ textAlign: "center", marginBottom: "12px" }}>
         <button
           onClick={() => speak(fullStoryText)}
+          disabled={isLoading || isPlaying}
           style={{
             marginRight: "8px",
             padding: "6px 14px",
             borderRadius: "20px",
             border: "1px solid #6040b060",
-            background: "#2a1b3d",
-            color: "#c0a0ff",
-            cursor: "pointer",
+            background: isLoading ? "#3a2b4d" : isPlaying ? "#1a4b2d" : "#2a1b3d",
+            color: isLoading ? "#999" : isPlaying ? "#5fef7f" : "#c0a0ff",
+            cursor: isLoading || isPlaying ? "default" : "pointer",
             fontFamily: "'Amiri', serif",
+            transition: "all 0.3s ease",
           }}
         >
-          ▶️ قراءة القصة
+          {isLoading ? "⏳ جاري التحميل..." : isPlaying ? "🔊 قيد التشغيل..." : "▶️ قراءة القصة"}
         </button>
 
         <button
