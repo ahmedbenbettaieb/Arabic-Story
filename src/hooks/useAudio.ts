@@ -44,7 +44,7 @@ export function useAudio() {
       [1047, 0.38],
     ].forEach(([f, t]) => note(ctx, f, t, 0.25, 0.28, "sine"));
 
-    speak("أحسنت");
+    speak("أَحْسَنْتَ");
   };
 
 const playWrong = () => {
@@ -59,7 +59,7 @@ const playWrong = () => {
 
   note(ctx, 110, 0.5, 0.5, 0.25, "triangle");
 
-  speak("إجابة خاطئة");
+  speak("إِجَابَةٌ خَاطِئَةٌ");
 };
 
   const playVictory = () => {
