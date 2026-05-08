@@ -19,21 +19,29 @@ export default function StorySection({ storyParts }: Props) {
       {/* 🎧 AUDIO CONTROLS */}
       <div style={{ textAlign: "center", marginBottom: "12px" }}>
         <button
-          onClick={() => speak(fullStoryText)}
+          onClick={() => speak(fullStoryText, "ar-SA-ZariyahNeural")}
           disabled={isLoading || isPlaying}
           style={{
             marginRight: "8px",
             padding: "6px 14px",
             borderRadius: "20px",
             border: "1px solid #6040b060",
-            background: isLoading ? "#3a2b4d" : isPlaying ? "#1a4b2d" : "#2a1b3d",
+            background: isLoading
+              ? "#3a2b4d"
+              : isPlaying
+                ? "#1a4b2d"
+                : "#2a1b3d",
             color: isLoading ? "#999" : isPlaying ? "#5fef7f" : "#c0a0ff",
             cursor: isLoading || isPlaying ? "default" : "pointer",
             fontFamily: "'Amiri', serif",
             transition: "all 0.3s ease",
           }}
         >
-          {isLoading ? "⏳ جاري التحميل..." : isPlaying ? "🔊 قيد التشغيل..." : "▶️ قراءة القصة"}
+          {isLoading
+            ? "⏳ جاري التحميل..."
+            : isPlaying
+              ? "🔊 قيد التشغيل..."
+              : "▶️ قراءة القصة"}
         </button>
 
         <button

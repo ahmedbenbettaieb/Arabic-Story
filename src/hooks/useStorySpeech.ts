@@ -5,7 +5,7 @@ export function useStorySpeech() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const speak = useCallback(async (text: string) => {
+  const speak = useCallback(async (text: string, voice?: string) => {
     try {
       if (audioRef.current) {
         audioRef.current.pause();
@@ -13,19 +13,24 @@ export function useStorySpeech() {
       }
       setIsLoading(true);
       setIsPlaying(false);
+
       
-      const response = await fetch(`/api/tts?text=${encodeURIComponent(text)}`);
+      const femaleVoice = voice || "ar-SA-ZariyahNeural";
+      const response = await fetch(
+        `/api/tts?text=${encodeURIComponent(text)}&voice=${femaleVoice}`,
+      );
+
       if (!response.ok) throw new Error("TTS API failed");
-      
+
       const blob = await response.blob();
       const audioUrl = URL.createObjectURL(blob);
       const newAudio = new Audio(audioUrl);
-      
+
       newAudio.onended = () => {
         setIsPlaying(false);
         URL.revokeObjectURL(audioUrl);
       };
-      
+
       audioRef.current = newAudio;
       await newAudio.play();
       setIsPlaying(true);
