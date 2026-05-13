@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import type { StoryPart } from "../data/quizData";
 
 interface Props {
@@ -6,7 +5,6 @@ interface Props {
 }
 
 export default function StorySection({ storyParts }: Props) {
-  const storyQueue = useMemo(() => storyParts.map((p) => p.text), [storyParts]);
 
   return (
     <div style={{ marginBottom: 24, marginTop: 16 }}>
